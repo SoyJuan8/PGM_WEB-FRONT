@@ -1,0 +1,359 @@
+<div style="background-color: #181818;" >
+  <mat-toolbar class="header" style="border-bottom: 1px solid; background-color: aliceblue;">
+    <span class="toolbar-spacer"></span>
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <button mat-raised-button color="accent" routerLink="/security/sign-in" *ngIf="!sesionIniciada; else cerrarSesionButton">
+        Iniciar Sesión
+      </button>
+      <ng-template #cerrarSesionButton>
+        <button mat-raised-button color="accent" (click)="cambiarEstadoSesion()">Cerrar sesión</button>
+      </ng-template>
+      <a (click)="openCar()"><mat-icon style="width: 30px; padding-right: 12px;">shopping_cart</mat-icon></a>
+    </div>
+  </mat-toolbar>  
+<div class="menu container" style="padding-top: 80px;">
+    <img class="logo-1" src="/assets/logo.png" alt="" />
+    <input type="checkbox" id="menu" />
+    <label for="menu">
+      <img src="/assets/menu.png" class="menu-icono" alt="" />
+    </label>
+    <nav class="barnav">
+      <div class="menu-1">
+        <ul>
+          <li><a class="text-danger" href="#">Inicio</a></li>
+          <li><a class="text-danger" href="#">Servicios</a></li>
+          <li><a class="text-danger" href="#">Productos</a></li>
+        </ul>
+      </div>
+
+      <img class="logo-2" src="/assets/logo.png" alt="" />
+
+      <div class="menu-2">
+        <ul>
+          <li><a href="#">Horario</a></li>
+        </ul>
+        <div class="socials">
+          <a href="#">
+            
+          </a>
+          <a href="#">
+            <div class="social">
+              <img src="/assets/s2.svg" alt="" />
+            </div>
+          </a>
+          <a href="#">
+            <div class="social">
+              <img src="/assets/s3.svg" alt="" />
+            </div>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="header-content container" style="background-color: #181818;">
+    <div class="swiper1 mySwiper-1">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="slider">
+            <div class="slider-txt">
+              <h1>Hamburguesa</h1>
+              <p>
+                Una dieta equilibrada es una hamburguesa en ambas manos. Ven
+                y disfruta de nuestras hamburguesas con una deliciosa carne
+                jugosa que calmara todos tus antojos contamos con 3
+                variedades , con precios desde $10.000.
+              </p>
+              <div class="botones">
+                <a href="#" class="btn-1">Comprar</a>
+                <a href="#" class="btn-1">Menu</a>
+              </div>
+            </div>
+            <div class="slider-img" style="display: flex; align-items: center; justify-content: center;">
+              <img src="/assets/slider1.png" alt="" style="width: 300px;"/>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="slider">
+            <div class="slider-txt">
+              <h1>Perro Caliente</h1>
+              <p>
+                ¿Qué tienes pensado comer hoy? ¿Porque no comemos unos
+                grandes perritos calientes ? asi es con nuestros deliciosos
+                perros caleintes quedaras satisfecho y calmaras todas tus
+                ansias ven y disfruta de nuestras 3 variedades desde tan
+                solo $8.000.
+              </p>
+              <div class="botones">
+                <a href="#" class="btn-1">Comprar</a>
+                <a href="#" class="btn-1">Menu</a>
+              </div>
+            </div>
+            <div class="slider-img">
+              <img src="/assets/slider2.png" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="slider">
+            <div class="slider-txt">
+              <h1>Variedad</h1>
+              <p>
+                Hacer que la comida sea excelente una y otra vez. Ese es
+                nuestro lema y con la seccion de variedad no vamos a ser
+                menos, aqui podras disfrutar de nuestras excelentes,
+                picadas, mazorcadas y salchipapas todas de tamaño familiar
+                desde $25.000.
+              </p>
+              <div class="botones">
+                <a href="#" class="btn-1">Comprar</a>
+                <a href="#" class="btn-1">Menu</a>
+              </div>
+            </div>
+            <div class="slider-img">
+              <img src="/assets/slider3.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-pagination"></div>
+    </div>
+  </div>
+<main class="products">
+  <div class="tabs container">
+    <input
+      type="radio"
+      name="tabs"
+      id="tab1"
+      checked="checked"
+      class="tabInput"
+      value="1"
+    />
+    <label for="tab1">Hamburguesa</label>
+    <div class="tab" >
+      <div class="swiper mySwiper-2" id="swiper1">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" *ngFor="let burguer of hamburguesas">
+            <div class="product">
+              <div class="product-img">
+                <h4>Nuevo</h4>
+                <img src="assets/food1.png" alt="" />
+              </div>
+              <div class="product-txt">
+                <h4>{{ burguer.name }}</h4>
+                <p>
+                  {{burguer.description}}
+                </p>
+                <span class="price">{{burguer.price}}</span>
+              </div>
+              <button mat-raised-button color="warn" (click)="updateCar(burguer.id)"> añadir al carrito </button>
+              <button mat-raised-button  (click)="buyProduct(burguer)"> comprar </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+
+    <input
+      type="radio"
+      name="tabs"
+      id="tab2"
+      checked="checked"
+      class="tabInput"
+      value="2"
+    />
+    <label for="tab2">Perro Caliente</label>
+    <div class="tab">
+      <div class="swiper mySwiper-2" id="swiper2">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="product" *ngFor="let hot of hotDogs">
+              <div class="product-img">
+                <h4>Nuevo</h4>
+                <img src="/assets/food4.png" alt="" />
+              </div>
+              <div class="product-txt">
+                <h4> {{hot.name}} </h4>
+                <p>
+                  {{hot.description}}
+                </p>
+                <span class="price"> {{hot.price}} </span>
+              </div>
+              <button mat-raised-button color="warn" (click)="updateCar(hot.id)"> añadir al carrito </button>
+              <button mat-raised-button  (click)="buyProduct(hot)"> comprar </button>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+
+    <input
+      type="radio"
+      name="tabs"
+      id="tab3"
+      checked="checked"
+      class="tabInput"
+      value="3"
+    />
+    <label for="tab3">Variedad</label>
+    <div class="tab">
+      <div class="swiper mySwiper-2" id="swiper3">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="product" *ngFor="let otro of otros">
+              <div class="product-img">
+                <h4>Nuevo</h4>
+                <img src="/assets/food7.png" alt="" />
+              </div>
+              <div class="product-txt">
+                <h4> {{otro.name}} </h4>
+                <p>
+                  {{otro.description}}
+                </p>
+                <span class="price"> {{ otro.price }} </span>
+                <div>
+                <button mat-raised-button color="warn" (click)="updateCar(otro.id)"> añadir al carrito </button>
+                <button mat-raised-button  (click)="buyProduct(otro)"> comprar </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<section class="info container">
+  <div class="info-img">
+    <img src="/assets/info.png" alt="" />
+  </div>
+
+  <div class="info-txt">
+    <h2>Informacion</h2>
+    <p>
+      J&J FOOD es un restaurante especializado en comidas rapidas con un
+      toque casero. Ofrecemos platos frescos y sabrosos, elaborados con
+      ingredientes de alta calidad y preparados por cocineros
+      experimentados. Nuestro menú incluye hamburguesas, perros caliente y
+      un poco de variedad. En J&J FOOD nos esforzamos por brindar una
+      experiencia única y satisfacer los paladares de nuestros clientes.
+      Visítenos y disfrute de una deliciosa comida en un ambiente acogedor y
+      amigable.
+    </p>
+    <a href="#" class="btn-2">Mas informacion</a>
+  </div>
+</section>
+
+<section class="horario">
+  <div class="horario-info container">
+    <h2>Horario</h2>
+    <div class="horario-txt">
+      <div class="txt">
+        <h4>Direccion</h4>
+        <p>Carrera 1 #66 08</p>
+        <p>Cerca del Unico Outlet</p>
+      </div>
+      <div class="txt">
+        <h4>Horario</h4>
+        <p>Lunes a Sabado : 2 pm - 11 pm</p>
+        <p>Domingos : 2 pm - 10 pm</p>
+      </div>
+      <div class="txt">
+        <h4>Telefono</h4>
+        <p>3222675895</p>
+        <p>3145671228</p>
+      </div>
+      <div class="txt">
+        <h4>Redes Sociales</h4>
+        <div class="socials">
+          <a href="#">
+            <div class="social">
+              <img src="/assets/s1.svg" alt="" />
+            </div>
+          </a>
+          <a href="#">
+            <div class="social">
+              <img src="/assets/s2.svg" alt="" />
+            </div>
+          </a>
+          <a href="#">
+            <div class="social">
+              <img src="/assets/s3.svg" alt="" />
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <iframe
+    class="map"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.4781952851713!2d-75.29799928549325!3d2.9647305978407545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3b7507745a1fa5%3A0x3fc0b5f02a6f18fe!2sCra.%201%20%2366%2008%2C%20Neiva%2C%20Huila!5e0!3m2!1ses-419!2sco!4v1678662054668!5m2!1ses-419!2sco"
+    width="100%"
+    height="500"
+    style="border: 0"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+</section>
+
+<footer class="footer container">
+  <img class="logo-2" src="/assets/logo.png" alt="" />
+  <div class="links">
+    <h4>Acerca de J&J FOOD</h4>
+    <ul>
+      <li><a href="#">Nosotros</a></li>
+      <li><a href="#">Domicilios en linea</a></li>
+      <li><a href="#">Nuestra carta</a></li>
+      <li><a href="#">Restaurantes</a></li>
+    </ul>
+  </div>
+  <div class="links">
+    <h4>Ayuda</h4>
+    <ul>
+      <li><a href="#">Hablanos</a></li>
+      <li><a href="#">Trabaja con nosotros</a></li>
+      <li><a href="#">Politica de tratamiento de datos</a></li>
+      <li><a href="#">Terminos y condiciones</a></li>
+    </ul>
+  </div>
+  <div class="links">
+    <h4>Siguenos</h4>
+    <div class="socials">
+      <a href="#">
+        <div class="social">
+          <img src="/assets/s1.svg" alt="" />
+        </div>
+      </a>
+      <a href="#">
+        <div class="social">
+          <img src="/assets/s2.svg" alt="" />
+        </div>
+      </a>
+      <a href="#">
+        <div class="social">
+          <img src="/assets/s3.svg" alt="" />
+        </div>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+<script src="script.js"></script>
+</div>
