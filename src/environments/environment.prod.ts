@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://apitodosalud.sunbeltfactory.com/'
+  apiUrl: 'https://burguer-eccomerce.fly.dev/'
 
 };
